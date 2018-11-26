@@ -1,5 +1,8 @@
+package curs.ecenta.beans;
 
-public class UserBean {
+import curs.ecenta.interfaces.Human;
+
+public class UserBean implements Human{
 	private int iduser;
 	private String FirstName;
 	private String LastName;
@@ -44,6 +47,12 @@ public class UserBean {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public String getBehavior() {
+		// TODO Auto-generated method stub
+		return "i need to learn";
 	}
 	
 
