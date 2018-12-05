@@ -8,15 +8,15 @@
 <title>Users List</title>
 </head>
 <body>
-<pre>
 Users : 
-firstName and last Name
-</pre> 
+<pre>
+userName and password
+</pre>
 <table>
 <c:forEach var="user" items="${users}">
 <tr>
-	<td>${user.getFirstName()}</td>
-	<td>${user.getLastName()}</td>
+	<td>${user.getUsername()}</td>
+	<td>${user.getPassword()}</td>
 </tr>
 </c:forEach>
 </table>

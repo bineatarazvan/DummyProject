@@ -30,5 +30,13 @@ public class UserController {
 		return "usersList";
 
 	}
+	@RequestMapping("/showPassword")
+	public String showPassword(Model model) {
+		UserDAO userDAO = new UserDAO();
+		ArrayList<UserBean> users = userDAO.GetUsers();
+		model.addAttribute("users", users);
+		return "usersList2";
+
+	}
 
 }

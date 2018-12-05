@@ -39,16 +39,15 @@ public class UserDAO {
 	
 	
 	
-//	public void insertUsers() {
+//	public void insertUsers() throws SQLException {
 //		ArrayList<UserBean> users = new ArrayList<>();
 //		DatabaseConnection dbcon = new DatabaseConnection();
-//		Connection con = dbcon.handleConnection();
+//		Connection con = dbcon.getConnection();
 //		Statement stmt = null;
 //		try {
 //			stmt = con.createStatement();
 //			String sql;
-//			 sql = "INSERT INTO user " +
-//	                   "VALUES (2, 'Zara', 'Ali', '18','as')";
+//			 sql = "INSERT INTO user " +"VALUES (4, 'Zaza', 'All', 'za','12')";
 //	      stmt.executeUpdate(sql);
 //			 
 //			
@@ -68,6 +67,36 @@ public class UserDAO {
 //		         se.printStackTrace();
 //		      }//end finally try
 //		   }//end try
-//		
+	
+//	public void insertUsers() throws SQLException {
+//		ArrayList<UserBean> users = new ArrayList<>();
+//		DatabaseConnection dbcon = new DatabaseConnection();
+//		Connection con = dbcon.handleConnection();
+//		Statement stmt = null;
+//		try {
+//			stmt = con.createStatement();
+//			String sql;
+//			 sql = "INSERT INTO user " +
+//	                   "VALUES (4, 'Zara', 'Ali', '18','as')";
+//	      stmt.executeUpdate(sql);
+//			 
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}finally{
+//		      //finally block used to close resources
+//		      try{
+//		         if(stmt!=null)
+//		            con.close();
+//		      }catch(SQLException se){
+//		      }// do nothing
+//		      try{
+//		         if(con!=null)
+//		            con.close();
+//		      }catch(SQLException se){
+//		         se.printStackTrace();
+//		      }//end finally try
+//		   }//end try
 //	}
+////	}
 }

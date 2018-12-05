@@ -52,7 +52,7 @@ public class UserBean implements Human{
 	@Override
 	public String getBehavior() {
 		// TODO Auto-generated method stub
-		return "i need to learn";
+		return "getBehavior Method";
 	}
 	
 

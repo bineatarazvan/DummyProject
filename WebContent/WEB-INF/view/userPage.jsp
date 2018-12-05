@@ -7,7 +7,11 @@
 <title>Hello Page</title>
 </head>
 <body>
-	Click on the Show users to see the list.
+<pre>
+Click on the Show passwod to see the list.
+		or
+Click on the Show users to see the list.
+</pre>                
 	<a href="./showUsers">Show Users</a>
-</body>
+	<p><a href="./showPassword">Show Password</a>
 </html>
