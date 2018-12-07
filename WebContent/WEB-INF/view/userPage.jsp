@@ -8,10 +8,8 @@
 </head>
 <body>
 <pre>
-Click on the Show passwod to see the list.
-		or
-Click on the Show users to see the list.
-</pre>                
+</pre>      
+    <a href="./login">Login</a>
 	<a href="./showUsers">Show Users</a>
 	<p><a href="./showPassword">Show Password</a>
 </html>
