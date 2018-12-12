@@ -37,6 +37,28 @@ public class UserDAO {
 		return users;
 	}
 	
+	public String getLoginUser(UserBean loginUser) {
+		String firstName=null;
+		
+		Connection con = null;
+		Statement stmt = null;
+		try {
+			DatabaseConnection dbcon = DatabaseConnection.getInstance();
+			con=dbcon.getConnection();
+			stmt = con.createStatement();
+			String sql;
+			sql = "SELECT firstName FROM user where username=\""+loginUser.getUsername()+"\" and password=\"" + loginUser.getPassword()+"\"";
+			ResultSet rs = stmt.executeQuery(sql);
+			 
+			while (rs.next()) {
+				firstName = rs.getString("firstName");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return firstName;
+	}
+	
 	
 	
 //	public void insertUsers() throws SQLException {

@@ -8,7 +8,7 @@
 <title>Spring Login Form</title>
 </head>
 <body>
-	<form name="submitForm" method="POST" action="/login">
+	<form name="submitForm" method="POST" action="login">
 		<div align="center">
 			<table>
 				<tr>

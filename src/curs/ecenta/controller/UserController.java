@@ -2,10 +2,12 @@ package curs.ecenta.controller;
 
 import java.util.ArrayList;
 
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,16 +43,33 @@ public class UserController {
 
 	}
 	
+	//se apeleaza cand actionam linkul de login si ne va returna pagina login.jsp
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	  public String show(Model model) {
 	    model.addAttribute("msg", "Please Enter Your Login Details");
 	    return "login";
 	  }
 	
-	  @RequestMapping(value = "/login", method = RequestMethod.POST)
-	  public String init(Model model) {
-	    model.addAttribute("msg", "Please Enter Your Login Details");
-	    return "login";
+	//se apeleaza cand se actioneaza butonul de Submit de pe pagina de login
+	  @POST
+	  @RequestMapping(value = "/login")
+	  public String submit(Model model, @FormParam("userName") String userName, @FormParam("password") String password) {
+		
+		UserBean loginUser = new UserBean();
+		loginUser.setUsername(userName);
+		loginUser.setPassword(password);
+		
+		UserDAO userDAO = new UserDAO();
+		String firstName = userDAO.getLoginUser(loginUser);
+		if(firstName == null) {
+			model.addAttribute("error", " User or password incorrect.");
+			return "login";
+		}
+		else {
+			model.addAttribute("msg", " You have successfully logged in.");
+			model.addAttribute("firstName", firstName);
+			return "succes";
+		}
 	  }
 
 }
