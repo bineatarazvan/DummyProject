@@ -1,5 +1,6 @@
 package curs.ecenta.controller;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.ws.rs.FormParam;
@@ -19,10 +20,11 @@ import curs.ecenta.interfaces.Human;
 public class UserController {
 
 	@RequestMapping("/")
-	public String showHelloPage() {
+	public String showHelloPage(Model model) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		Human userBean = context.getBean("userBean", Human.class);
 		System.out.println(userBean.getBehavior());
+		model.addAttribute("msg", " ");
 		return "userPage";
 
 	}
@@ -40,7 +42,6 @@ public class UserController {
 		ArrayList<UserBean> users = userDAO.GetUsers();
 		model.addAttribute("users", users);
 		return "usersList2";
-
 	}
 	
 	//se apeleaza cand actionam linkul de login si ne va returna pagina login.jsp
@@ -71,5 +72,37 @@ public class UserController {
 			return "succes";
 		}
 	  }
+	  
+	//se apeleaza cand actionam linkul "Register" si te trimite pe pagina de register pentru a se inregistra userul
+		@RequestMapping(value = "/register", method = RequestMethod.GET)
+		  public String toPage(Model model) {
+		    model.addAttribute("error", "Please complete all fields for creating a new account");
+		    return "register";
+		  }
+		
+	  
+	  @POST
+	  @RequestMapping(value = "/register")
+	  public String insertNewUser(Model model, @FormParam("user") String user, 
+			  @FormParam("pass") String pass, @FormParam("fName") String fName, @FormParam("lName") String lName) throws SQLException {
+		
+		UserBean registerUser = new UserBean();
+		registerUser.setUsername(user);
+		registerUser.setPassword(pass);
+		registerUser.setLastName(lName);
+		registerUser.setFirstName(fName);
+		
+		UserDAO userDAO = new UserDAO();
+		userDAO.registerUser(registerUser);
+	  if(user.isEmpty()||pass.isEmpty()||lName.isEmpty()||fName.isEmpty()) {
+			model.addAttribute("error", " Every field must be completed !!!");
+			return "register";
+		}
+		else {
+			model.addAttribute("msg", " Congratulations! Your account has been created.");
+			return "userPage";
+		}
+	  }
+	  
 
 }

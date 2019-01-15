@@ -8,9 +8,12 @@
 </head>
 <body>
 <pre>
-</pre>      
+</pre>    
+  
     <a href="./login">Login</a></br>
-	<a href="./showUsers">Show Users</a>
-	<p><a href="./showPassword">Show Password</a>
+    <a href="./register">Register</a></br>
+	<a href="./showUsers">Show Users</br>
+	<a href="./showPassword">Show Password</a>
 	
+	<div style="color: blue">${msg}</div>
 </html>
